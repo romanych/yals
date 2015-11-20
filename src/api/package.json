@@ -1,0 +1,14 @@
+{
+  "name": "yals-api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "node-localstorage": "^0.6.0",
+    "short-hash": "^1.0.0"
+  }
+}

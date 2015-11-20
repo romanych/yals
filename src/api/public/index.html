@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form id="f" method="post" onsubmit="shorten(); return false;">
+    <input type="url" name="url" id="url" placeholder="Paste your URL here"/>
+    <input type="submit" value="Shorten">
+</form>
+<div id="recent-links"></div>
+<script>
+    window.shorten = function () {
+        fetch('/shorten', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({url: document.getElementById('url').value})
+        }).then(function (response) {
+            return response.json();
+        }).then(function (response) {
+            var url = response.shortUrl;
+            var msg = url ? '<a href="' + url + '">' + url + '</a>' : response.message;
+            document.getElementById('recent-links').innerHTML = msg;
+        });
+    };
+</script>
+</body>
+</html>

@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        form {
+            display: block;
+            width: 400px;
+            margin: 40px auto;
+            zoom: 1.1;
+        }
+
+        form input[type=url] {
+            width: 330px;
+        }
+    </style>
 </head>
 <body>
 <form id="f" method="post" onsubmit="shorten(); return false;">
     <input type="url" name="url" id="url" placeholder="Paste your URL here"/>
     <input type="submit" value="Shorten">
+
+    <div id="recent-links"></div>
 </form>
-<div id="recent-links"></div>
 <script>
     window.shorten = function () {
         fetch('/shorten', {
